@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain vs. Phone — The Happiness Lab</title>
+<meta name="description" content="An interactive lab for kids and families: discover what really builds happiness, how apps are designed to hook your brain, and how to make tech your tool — not your trap.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="logo" data-nav="home">🧠<span>Brain vs. Phone</span></button>
+    <div class="progress-dots" id="progressDots" title="Your mission progress"></div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button data-nav="home">🏠 Start</button>
+    <button data-nav="hook">🎣 The Hook</button>
+    <button data-nav="attention">⏳ Your Time</button>
+    <button data-nav="happiness">😊 Happiness</button>
+    <button data-nav="quiz">🎯 Quiz</button>
+    <button data-nav="sorter">⚖️ Tool or Trap</button>
+    <button data-nav="challenges">🔥 Challenges</button>
+    <button data-nav="movies">🍿 Movie Night</button>
+    <button data-nav="pledge">🤝 Pledge</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ================= HOME ================= -->
+<section class="panel active" id="panel-home">
+  <div class="hero">
+    <div class="hero-emoji">🧠⚡📱</div>
+    <h1>Brain vs. Phone</h1>
+    <p class="hero-sub">The Happiness Lab</p>
+    <p class="hero-text">
+      Here's a secret most adults won't tell you: some of the smartest people in the
+      world are paid to keep you staring at a screen. And some of the other smartest
+      people in the world study what <em>actually</em> makes humans happy.
+      <strong>In this lab, you get to learn both.</strong>
+    </p>
+    <button class="btn btn-big" data-nav="hook">Start Mission 1 🚀</button>
+  </div>
+
+  <div class="card-grid missions-grid">
+    <button class="mission-card" data-nav="hook" data-mission="hook">
+      <span class="mc-emoji">🎣</span><span class="mc-num">Mission 1</span>
+      <strong>The Hook</strong><span>How apps grab your brain — try the trick yourself</span>
+      <span class="mc-check">✅ Done</span>
+    </button>
+    <button class="mission-card" data-nav="attention" data-mission="attention">
+      <span class="mc-emoji">⏳</span><span class="mc-num">Mission 2</span>
+      <strong>Your Time Machine</strong><span>If the app is free… what are YOU paying?</span>
+      <span class="mc-check">✅ Done</span>
+    </button>
+    <button class="mission-card" data-nav="happiness" data-mission="happiness">
+      <span class="mc-emoji">😊</span><span class="mc-num">Mission 3</span>
+      <strong>The Happiness Formula</strong><span>Build a perfect day with science</span>
+      <span class="mc-check">✅ Done</span>
+    </button>
+    <button class="mission-card" data-nav="quiz" data-mission="quiz">
+      <span class="mc-emoji">🎯</span><span class="mc-num">Mission 4</span>
+      <strong>Myth or Fact?</strong><span>Test what you've learned</span>
+      <span class="mc-check">✅ Done</span>
+    </button>
+    <button class="mission-card" data-nav="sorter" data-mission="sorter">
+      <span class="mc-emoji">⚖️</span><span class="mc-num">Mission 5</span>
+      <strong>Tool or Trap?</strong><span>Tech isn't evil — sort the good from the sneaky</span>
+      <span class="mc-check">✅ Done</span>
+    </button>
+    <button class="mission-card" data-nav="challenges" data-mission="challenges">
+      <span class="mc-emoji">🔥</span><span class="mc-num">Mission 6</span>
+      <strong>Happiness Experiments</strong><span>7 real-world challenges to try this week</span>
+      <span class="mc-check">✅ Done</span>
+    </button>
+  </div>
+
+  <div class="card home-extra">
+    <h3>🍿 Then, together as a family…</h3>
+    <p>Pick a documentary for <button class="link-btn" data-nav="movies">Family Movie Night</button>
+    and build your own <button class="link-btn" data-nav="pledge">Family Screen Pledge</button> —
+    where the grown-ups have to promise things too. 😄</p>
+  </div>
+
+  <div class="card cert-card" id="certCard">
+    <h3>🏆 Brain Master Certificate</h3>
+    <p id="certStatus">Complete all 6 missions to unlock your certificate!</p>
+    <div id="certUnlock" class="hidden">
+      <input type="text" id="certName" placeholder="Type your name" maxlength="30">
+      <button class="btn" id="certBtn">Get my certificate 🎓</button>
+    </div>
+    <div id="certificate" class="certificate hidden">
+      <div class="cert-inner">
+        <div class="cert-badge">🧠🏆</div>
+        <h2>Certificate of Brain Mastery</h2>
+        <p class="cert-name" id="certNameOut"></p>
+        <p>has completed all 6 missions of the Happiness Lab and now knows
+        the secrets of the hook, the value of their attention, and the real
+        science of a happy life.</p>
+        <p class="cert-line">Enjoyment 🧡 &nbsp; Satisfaction 💜 &nbsp; Meaning 💚</p>
+        <p class="cert-date" id="certDate"></p>
+      </div>
+      <button class="btn btn-ghost" onclick="window.print()">🖨️ Print it</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MISSION 1: THE HOOK ================= -->
+<section class="panel" id="panel-hook">
+  <div class="mission-head">
+    <span class="pill">Mission 1</span>
+    <h2>🎣 The Hook: how apps grab your brain</h2>
+    <p>Your brain has a chemical messenger called <strong>dopamine</strong>. Its job isn't to make
+    you happy — its job is to make you <em>want things</em> and go looking for more.
+    App designers know this. Let's try their favorite trick on you, right now.</p>
+  </div>
+
+  <div class="card slot-card">
+    <h3>🎰 Experiment: The Mystery Feed</h3>
+    <p>You just posted a photo. Tap <strong>refresh</strong> to see if anyone liked it.
+    Try it a few times.</p>
+    <div class="slot-screen" id="slotScreen">
+      <div class="slot-result" id="slotResult">📱 Your post is live…</div>
+    </div>
+    <button class="btn btn-big" id="slotBtn">🔄 Pull to refresh</button>
+    <p class="slot-count" id="slotCount"></p>
+    <div class="insight hidden" id="slotInsight">
+      <h4>🔬 What just happened?</h4>
+      <p>You kept pulling because you <strong>never knew what you'd get</strong>. Sometimes
+      nothing, sometimes a jackpot of likes. Scientists call this a
+      <strong>variable reward</strong> — it's the exact same trick slot machines in casinos
+      use, and it's the most powerful known way to make a brain repeat a behavior.</p>
+      <p>Every "pull to refresh," every scroll, every notification is a tiny lever pull.
+      <em>The Social Dilemma</em> — a film where the people who BUILT these apps confess how
+      they work — calls your phone "a slot machine in your pocket."</p>
+      <p class="power-move">💪 <strong>Power move:</strong> when you catch yourself refreshing again and
+      again — smile and say "nice try, slot machine." Naming the trick breaks its spell.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🃏 The Trick Deck</h3>
+    <p>Tap each card to flip it and reveal the trick — and your power move against it.</p>
+    <div class="flip-grid" id="flipGrid"></div>
+  </div>
+
+  <div class="card fact-strip">
+    <h3>🧪 From the film <em>Screened Out</em></h3>
+    <p>Screens aren't "bad" — but growing brains (yes, yours, until about age 25!) are extra
+    sensitive to dopamine loops. Understanding the habit is the <strong>first step</strong> to
+    being the boss of it. You can't outsmart a trick you can't see. Now you can see it. 😎</p>
+  </div>
+
+  <div class="mission-done">
+    <button class="btn btn-big" id="doneHook">Mission 1 complete → Mission 2 ⏳</button>
+  </div>
+</section>
+
+<!-- ================= MISSION 2: ATTENTION ================= -->
+<section class="panel" id="panel-attention">
+  <div class="mission-head">
+    <span class="pill">Mission 2</span>
+    <h2>⏳ Your Time Machine: if it's free, who pays?</h2>
+    <p>The film <em>The Great Hack</em> revealed something wild: companies collected data from
+    millions of people to predict — and nudge — what they think and buy.
+    Why? Because <strong>your attention is worth money</strong>. Apps are free because
+    <em>you</em> are the product being sold to advertisers.</p>
+  </div>
+
+  <div class="card">
+    <h3>🧮 The Attention Calculator</h3>
+    <p>Slide to how much time you (honestly! 😅) spend on scrolling apps per day:</p>
+    <div class="slider-row">
+      <input type="range" id="timeSlider" min="0" max="480" step="15" value="120">
+      <div class="slider-value" id="timeValue">2h 0m / day</div>
+    </div>
+    <div class="calc-tiles">
+      <div class="tile"><span class="tile-num" id="calcWeek">—</span><span class="tile-label">hours per week</span></div>
+      <div class="tile"><span class="tile-num" id="calcYear">—</span><span class="tile-label">full days per year</span></div>
+      <div class="tile"><span class="tile-num" id="calcLife">—</span><span class="tile-label">years by age 80</span></div>
+    </div>
+    <div class="insight" id="calcInsight"></div>
+  </div>
+
+  <div class="card">
+    <h3>💰 How the money machine works</h3>
+    <ol class="steps-list">
+      <li><strong>You scroll</strong> → the app learns what makes you stop, laugh, or feel bad about yourself.</li>
+      <li><strong>The algorithm</strong> uses that to pick the next video — not the <em>best</em> one for you, the most <em>gripping</em> one.</li>
+      <li><strong>Advertisers pay</strong> the app for the minutes of your life it captured.</li>
+    </ol>
+    <p class="power-move">💪 <strong>Power move:</strong> you're not the customer — you're the crop being
+    harvested. 🌾 Once you know that, YOU can decide when to give attention… and when it's
+    just not for sale.</p>
+  </div>
+
+  <div class="mission-done">
+    <button class="btn btn-big" id="doneAttention">Mission 2 complete → Mission 3 😊</button>
+  </div>
+</section>
+
+<!-- ================= MISSION 3: HAPPINESS ================= -->
+<section class="panel" id="panel-happiness">
+  <div class="mission-head">
+    <span class="pill">Mission 3</span>
+    <h2>😊 The Happiness Formula</h2>
+    <p>Harvard professor <strong>Dr. Arthur Brooks</strong> studies happiness for a living. His
+    biggest discovery? Happiness is not a feeling you chase — it's more like food.
+    A happy life needs <strong>three "macronutrients"</strong>, just like your body needs
+    protein, carbs and fats:</p>
+  </div>
+
+  <div class="card-grid nutrients-grid">
+    <div class="card nutrient n-enjoy">
+      <span class="n-emoji">🧡</span><h3>Enjoyment</h3>
+      <p><strong>Pleasure + people + memory.</strong> Eating cake alone while scrolling = pleasure
+      (gone in seconds). Baking a cake with your cousin and laughing about the mess for years =
+      enjoyment. Pleasure is solo and fades. Enjoyment is shared and sticks.</p>
+    </div>
+    <div class="card nutrient n-satisfy">
+      <span class="n-emoji">💜</span><h3>Satisfaction</h3>
+      <p><strong>The joy after working hard for something.</strong> Beating a level you struggled with.
+      Finally nailing a skateboard trick. Here's the catch: it fades, so you need to keep growing.
+      No struggle = no satisfaction. That's why "easy" is boring.</p>
+    </div>
+    <div class="card nutrient n-meaning">
+      <span class="n-emoji">💚</span><h3>Meaning</h3>
+      <p><strong>Mattering to something bigger than you.</strong> Helping your little brother.
+      Being someone your friends can count on. Wondering about big questions.
+      This is the one phones quietly steal — big questions need quiet, and phones eat all the quiet.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🍽️ Build Your Perfect Saturday</h3>
+    <p>Pick <strong>4 activities</strong> for your dream Saturday and watch the happiness
+    nutrients fill up. (Yes, screen stuff is on the menu — this is real life!)</p>
+    <div class="activity-grid" id="activityGrid"></div>
+    <div class="meters">
+      <div class="meter-row"><span class="meter-label">🧡 Enjoyment</span><div class="meter"><div class="meter-fill f-enjoy" id="meterEnjoy"></div></div></div>
+      <div class="meter-row"><span class="meter-label">💜 Satisfaction</span><div class="meter"><div class="meter-fill f-satisfy" id="meterSatisfy"></div></div></div>
+      <div class="meter-row"><span class="meter-label">💚 Meaning</span><div class="meter"><div class="meter-fill f-meaning" id="meterMeaning"></div></div></div>
+    </div>
+    <div class="insight" id="plateInsight">Pick your 4 activities above! 👆</div>
+  </div>
+
+  <div class="card">
+    <h3>✨🪤 Shiny Traps vs. 🌳 Real Paths</h3>
+    <p>Dr. Brooks found that people chase four <strong>shiny traps</strong> that never actually
+    deliver lasting happiness — and social media is basically a machine for all four. The four
+    <strong>real paths</strong> are quieter, but they actually work. Tap a card and guess!</p>
+    <div class="guess-zone" id="idolZone"></div>
+  </div>
+
+  <div class="card fact-strip">
+    <h3>🎢 One more secret: the "arrival fallacy"</h3>
+    <p>"I'll be happy WHEN I get more followers / the new phone / famous…" — nope. Scientists call
+    this the <strong>arrival fallacy</strong>: you arrive, feel good for a moment, and the feeling
+    evaporates. Even negative feelings are normal and useful — happy people aren't happy ALL the
+    time. They just know sad and bored are visitors, not permanent roommates. 🚪</p>
+  </div>
+
+  <div class="mission-done">
+    <button class="btn btn-big" id="doneHappiness">Mission 3 complete → Quiz time 🎯</button>
+  </div>
+</section>
+
+<!-- ================= MISSION 4: QUIZ ================= -->
+<section class="panel" id="panel-quiz">
+  <div class="mission-head">
+    <span class="pill">Mission 4</span>
+    <h2>🎯 Myth or Fact?</h2>
+    <p>Time to test your lab knowledge. 10 statements — you call it: <strong>Myth</strong> or
+    <strong>Fact</strong>?</p>
+  </div>
+  <div class="card quiz-card" id="quizCard">
+    <div class="quiz-progress" id="quizProgress"></div>
+    <div class="quiz-question" id="quizQuestion"></div>
+    <div class="quiz-buttons" id="quizButtons">
+      <button class="btn btn-myth" id="btnMyth">🙅 Myth</button>
+      <button class="btn btn-fact" id="btnFact">✅ Fact</button>
+    </div>
+    <div class="quiz-feedback hidden" id="quizFeedback"></div>
+    <button class="btn hidden" id="quizNext">Next question →</button>
+  </div>
+  <div class="card hidden" id="quizResult"></div>
+</section>
+
+<!-- ================= MISSION 5: SORTER ================= -->
+<section class="panel" id="panel-sorter">
+  <div class="mission-head">
+    <span class="pill">Mission 5</span>
+    <h2>⚖️ Tool or Trap?</h2>
+    <p>Here's the plot twist: <strong>technology isn't the villain</strong>. A phone can help you
+    learn guitar, video-call your grandparents, or make a movie with friends. The same phone can
+    also eat your whole evening. The difference? Whether <strong>you're using it</strong> — or
+    <strong>it's using you</strong>. Sort each situation:</p>
+  </div>
+  <div class="card sorter-card">
+    <div class="sorter-progress" id="sorterProgress"></div>
+    <div class="sorter-item" id="sorterItem"></div>
+    <div class="quiz-buttons">
+      <button class="btn btn-tool" id="btnTool">🛠️ Tool<br><small>I'm using it</small></button>
+      <button class="btn btn-trap" id="btnTrap">🪤 Trap<br><small>It's using me</small></button>
+    </div>
+    <div class="quiz-feedback hidden" id="sorterFeedback"></div>
+    <button class="btn hidden" id="sorterNext">Next →</button>
+  </div>
+  <div class="card hidden" id="sorterResult"></div>
+  <div class="card fact-strip">
+    <h3>🧭 The 3-Question Compass</h3>
+    <p>Not sure if something's a tool or a trap? Ask:
+    <strong>1)</strong> Did I <em>choose</em> this, or did it grab me?
+    <strong>2)</strong> Will I be glad I did it an hour from now?
+    <strong>3)</strong> Is it connecting me to real people — or replacing them?</p>
+  </div>
+</section>
+
+<!-- ================= MISSION 6: CHALLENGES ================= -->
+<section class="panel" id="panel-challenges">
+  <div class="mission-head">
+    <span class="pill">Mission 6</span>
+    <h2>🔥 Happiness Experiments</h2>
+    <p>Science only counts if you test it. Here are <strong>7 real-world experiments</strong> —
+    each one is proven to boost real happiness. Try them this week and tick them off.
+    (Parents can play too. In fact… challenge them. 😏)</p>
+  </div>
+  <div class="card">
+    <div class="challenge-list" id="challengeList"></div>
+    <div class="challenge-progress"><div class="meter"><div class="meter-fill f-fire" id="challengeMeter"></div></div>
+    <p id="challengeStatus"></p></div>
+  </div>
+  <div class="mission-done">
+    <button class="btn btn-big" id="doneChallenges">I'm doing the experiments! Finish missions 🏆</button>
+  </div>
+</section>
+
+<!-- ================= MOVIE NIGHT ================= -->
+<section class="panel" id="panel-movies">
+  <div class="mission-head">
+    <span class="pill">Family Zone</span>
+    <h2>🍿 Family Movie Night</h2>
+    <p>These are the real documentaries this lab is built from. Pick one, make popcorn, watch
+    together — then use the talk-about questions. (No lectures allowed. The film
+    <em>Screenagers</em> proved honest conversations beat arguments every time.)</p>
+  </div>
+  <div class="card-grid movie-grid" id="movieGrid"></div>
+  <div class="card">
+    <h3>🎧 For the grown-ups</h3>
+    <p>Parents: the happiness science in Mission 3 comes from the
+    <a href="https://podcasts.apple.com/sg/podcast/foundmyfitness/id818198322?i=1000757095400"
+    target="_blank" rel="noopener">FoundMyFitness podcast #110 — "How To Build Lasting Happiness"
+    with Dr. Arthur Brooks</a> (host: Dr. Rhonda Patrick). It's a great listen on a long drive —
+    and it explains why the pledge on the next page asks <em>you</em> to put your phone away at
+    dinner too. 😉</p>
+  </div>
+</section>
+
+<!-- ================= PLEDGE ================= -->
+<section class="panel" id="panel-pledge">
+  <div class="mission-head">
+    <span class="pill">Family Zone</span>
+    <h2>🤝 The Family Screen Pledge</h2>
+    <p>Deals only work when they're fair. So this pledge has two sides: kids promise things,
+    and grown-ups promise things. Tick what your family agrees to, add your names, and print it
+    for the fridge.</p>
+  </div>
+  <div class="pledge-cols">
+    <div class="card">
+      <h3>🧒 Kids promise…</h3>
+      <div id="kidPledges"></div>
+      <input type="text" id="kidNames" placeholder="Kid name(s)" maxlength="60">
+    </div>
+    <div class="card">
+      <h3>🧑‍🦱 Grown-ups promise…</h3>
+      <div id="adultPledges"></div>
+      <input type="text" id="adultNames" placeholder="Grown-up name(s)" maxlength="60">
+    </div>
+  </div>
+  <div class="mission-done">
+    <button class="btn btn-big" id="makePledge">Create our pledge 📜</button>
+  </div>
+  <div class="card certificate hidden" id="pledgeOut">
+    <div class="cert-inner">
+      <div class="cert-badge">🤝</div>
+      <h2>Our Family Screen Pledge</h2>
+      <div id="pledgeText"></div>
+      <p class="cert-date" id="pledgeDate"></p>
+    </div>
+    <button class="btn btn-ghost" onclick="window.print()">🖨️ Print for the fridge</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Made with 🧠 + ❤️ for curious families.</p>
+  <p class="foot-small">Inspired by <em>The Social Dilemma</em>, <em>Childhood 2.0</em>,
+  <em>Screened Out</em>, <em>Screenagers</em>, <em>The Great Hack</em>, and the science of
+  Dr. Arthur Brooks (FoundMyFitness podcast #110). This is an educational project — not medical advice.</p>
+</footer>
+
+<div class="confetti-layer" id="confettiLayer"></div>
+<script src="app.js"></script>
+</body>
+</html>
